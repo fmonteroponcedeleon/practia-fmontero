@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { BusinessService } from 'src/app/services/business.service';
@@ -18,10 +17,10 @@ export class CustomerNewComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(f: NgForm) {
+  onSubmit(f: any) {
     this.businessService.createCustomer(
-      f.value['inputFirstName'], f.value['inputLastName'], f.value['inputDocumentNumber'],
-      f.value['inputEmail'], f.value['inputMobile'], f.value['inputPhone'], f.value['inputMonthlyAmount']).subscribe(
+      f.value.inputFullName, f.value.inputDocumentNumber, f.value.inputAddress,
+      f.value.inputPhone, f.value.inputDateOfBirth).subscribe(
         (serviceResult: string) => {
           this.router.navigate(['/customers']);
           // TODO: Toastr notification!

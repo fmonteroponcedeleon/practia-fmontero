@@ -24,8 +24,13 @@ export class CustomerDetailComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.customerId = params.id;
       this.businessService.getCustomerById(this.customerId).subscribe(
-        (serviceResult: Customer) => {
-          this.customer = serviceResult;
+        (serviceResult: any) => {
+          this.customer.id = serviceResult.id;
+          this.customer.fullName = serviceResult.nombreCompleto;
+          this.customer.documentNumber = serviceResult.cedula;
+          this.customer.address = serviceResult.direccion;
+          this.customer.phone = serviceResult.telefono;
+          this.customer.dateOfBirth = serviceResult.fechaNacimiento;
         },
         error => {
           // TODO: Handling error

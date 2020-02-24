@@ -1,17 +1,16 @@
 <div class="card bg-light mb-3" style="width: 50%;">
-    <div class="card-header">Customer</div>
+    <div class="card-header">Cliente</div>
     <div class="card-body">
-        <h5 class="card-title">{{ customer.first_name }} {{ customer.last_name }}</h5>
-        <p class="card-text">CI: {{ customer.docNumber }}</p>
-        <p class="card-text">Email: {{ customer.email }}</p>
-        <p class="card-text">Mobile: {{ customer.mobile }}</p>
-        <p class="card-text">Phone: {{ customer.phone }}</p>
-        <p class="card-text">Monthly Amount: {{ customer.monthlyAmount }}</p>
+        <h5 class="card-title">{{ customer.fullName }}</h5>
+        <p class="card-text">Cedula: {{ customer.documentNumber }}</p>
+        <p class="card-text">Dirección: {{ customer.address }}</p>
+        <p class="card-text">Teléfono: {{ customer.phone }}</p>
+        <p class="card-text">Fecha de Nacimiento: {{ customer.dateOfBirth | date: 'dd/MM/yyyy' }}</p>
         <div class="btn-group btn-group-sm float-right" role="group">
-            <button type="button" class="btn btn-danger" (click)="deleteCustomer(customer)">Delete</button>
+            <button type="button" class="btn btn-danger" (click)="deleteCustomer(customer)">Eliminar</button>
         </div>
     </div>
 </div>
 <div class="btn-group btn-group-sm" role="group">
-    <button type="button" class="btn btn-secondary" (click)="back()">Back</button>
+    <button type="button" class="btn btn-secondary" (click)="back()">Volver</button>
 </div>

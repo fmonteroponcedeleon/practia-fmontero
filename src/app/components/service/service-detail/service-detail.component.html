@@ -1,1 +1,13 @@
-<p>service-detail works!</p>
+<div class="card bg-light mb-3" style="width: 50%;">
+    <div class="card-header">Servicio</div>
+    <div class="card-body">
+        <h5 class="card-title">{{ service.name }}</h5>
+        <p class="card-text">Cuota Mensual: {{ service.monthlyFee }}</p>
+        <div class="btn-group btn-group-sm float-right" role="group">
+            <button type="button" class="btn btn-danger" (click)="deleteService(service)">Eliminar</button>
+        </div>
+    </div>
+</div>
+<div class="btn-group btn-group-sm" role="group">
+    <button type="button" class="btn btn-secondary" (click)="back()">Volver</button>
+</div>

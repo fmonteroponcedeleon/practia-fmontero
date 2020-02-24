@@ -1,1 +1,22 @@
-<p>service-list works!</p>
+<h2>Servicios</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Cuota Mensual</th>
+            <th><button type="button" class="btn btn-success float-right" (click)="createService()">Nuevo</button></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let service of services">
+            <th scope="row">{{ service.name }}</th>
+            <td>{{ service.monthlyFee }}</td>
+            <td>
+                <div class="btn-group btn-group-sm float-right" role="group">
+                    <button type="button" class="btn btn-primary" (click)="getServiceDetails(service)">Detalle</button>
+                    <button type="button" class="btn btn-warning" (click)="editService(service)">Editar</button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

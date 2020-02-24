@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgForm } from '@angular/forms';
 
 import { BusinessService } from 'src/app/services/business.service';
 
@@ -25,28 +24,31 @@ export class CustomerEditComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.customerId = params.id;
       this.businessService.getCustomerById(this.customerId).subscribe(
-        (serviceResult: Customer) => {
-          this.customer = serviceResult;
+        (serviceResult: any) => {
+          this.customer.id = serviceResult.id;
+          this.customer.fullName = serviceResult.nombreCompleto;
+          this.customer.documentNumber = serviceResult.cedula;
+          this.customer.address = serviceResult.direccion;
+          this.customer.phone = serviceResult.telefono;
+          this.customer.dateOfBirth = serviceResult.fechaNacimiento;
         },
         error => {
           // TODO: Handling error
         }
       );
-
     });
   }
 
   onSubmit() {
-    console.log('customer', this.customer);
     this.businessService.editCustomer(this.customer).subscribe(
-        (serviceResult: string) => {
-          this.router.navigate(['/customers']);
-          // TODO: Toastr notification!
-        },
-        error => {
-
-        }
-      );
+      (serviceResult: string) => {
+        this.router.navigate(['/customers']);
+        // TODO: Toastr notification!
+      },
+      error => {
+        // TODO: Handling error
+      }
+    );
   }
 
   back(): void {
