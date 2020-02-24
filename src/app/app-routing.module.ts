@@ -2,11 +2,16 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
+
 import { CustomerListComponent } from './components/customer/customer-list/customer-list.component';
 import { CustomerDetailComponent } from './components/customer/customer-detail/customer-detail.component';
 import { CustomerNewComponent } from './components/customer/customer-new/customer-new.component';
 import { CustomerEditComponent } from './components/customer/customer-edit/customer-edit.component';
-import { ServiceComponent } from './components/service/service.component';
+
+import { ServiceListComponent } from './components/service/service-list/service-list.component';
+import { ServiceDetailComponent } from './components/service/service-detail/service-detail.component';
+import { ServiceNewComponent } from './components/service/service-new/service-new.component';
+import { ServiceEditComponent } from './components/service/service-edit/service-edit.component';
 
 const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
@@ -15,7 +20,10 @@ const APP_ROUTES: Routes = [
   { path: 'customer/new', component: CustomerNewComponent },
   { path: 'customer/:id', component: CustomerDetailComponent },
   { path: 'customer/edit/:id', component: CustomerEditComponent },
-  { path: 'services', component: ServiceComponent },
+  { path: 'services', component: ServiceListComponent },
+  { path: 'service/new', component: ServiceNewComponent },
+  { path: 'service/:id', component: ServiceDetailComponent },
+  { path: 'service/edit/:id', component: ServiceEditComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];
 

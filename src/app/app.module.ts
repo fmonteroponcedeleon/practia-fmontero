@@ -11,11 +11,16 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
-import { ServiceComponent } from './components/service/service.component';
+
 import { CustomerListComponent } from './components/customer/customer-list/customer-list.component';
 import { CustomerDetailComponent } from './components/customer/customer-detail/customer-detail.component';
 import { CustomerNewComponent } from './components/customer/customer-new/customer-new.component';
 import { CustomerEditComponent } from './components/customer/customer-edit/customer-edit.component';
+
+import { ServiceListComponent } from './components/service/service-list/service-list.component';
+import { ServiceDetailComponent } from './components/service/service-detail/service-detail.component';
+import { ServiceNewComponent } from './components/service/service-new/service-new.component';
+import { ServiceEditComponent } from './components/service/service-edit/service-edit.component';
 
 @NgModule({
   declarations: [
@@ -25,9 +30,12 @@ import { CustomerEditComponent } from './components/customer/customer-edit/custo
     AboutComponent,
     CustomerListComponent,
     CustomerDetailComponent,
-    ServiceComponent,
     CustomerNewComponent,
-    CustomerEditComponent
+    CustomerEditComponent,
+    ServiceListComponent,
+    ServiceDetailComponent,
+    ServiceNewComponent,
+    ServiceEditComponent
   ],
   imports: [
     BrowserModule,

@@ -50,5 +50,37 @@
       "monthlyAmount": "3728382",
       "id": 9
     }
+  ],
+  "services": [
+    {
+      "id": 1,
+      "code": "SERVICE-01",
+      "name": "SOFTWARE SERVICE",
+      "description": "Software development services with Angular and .Net"
+    },
+    {
+      "id": 2,
+      "code": "SERVICE-02",
+      "name": "MOTOR-SPORT SERVICE",
+      "description": "Car engine performance improvement services"
+    },
+    {
+      "id": 3,
+      "code": "SERVICE-03",
+      "name": "AGRO SERVICE",
+      "description": "Technological services for efficient management of your agricultural and livestock businesses"
+    },
+    {
+      "id": 4,
+      "code": "SERVICE-04",
+      "name": "ACADEMIC SERVICE",
+      "description": "Academic services to train in different business areas"
+    },
+    {
+      "id": 4,
+      "code": "SERVICE-05",
+      "name": "IT SERVICE",
+      "description": "IT services to support your business operations"
+    }
   ]
 }
