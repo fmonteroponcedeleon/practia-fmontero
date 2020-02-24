@@ -1,0 +1,49 @@
+<form #f="ngForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputFirstName">First Name</label>
+            <input type="text" class="form-control" id="inputFirstName" name="inputFirstName" required
+                #inputFirstName="ngModel" [(ngModel)]="customer.first_name">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputLastName">Last Name</label>
+            <input type="text" class="form-control" id="inputLastName" name="inputLastName" required
+                #inputLastName="ngModel" [(ngModel)]="customer.last_name">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputDocumentNumber">Uruguayan Document Number</label>
+            <input type="text" class="form-control" id="inputDocumentNumber" name="inputDocumentNumber" required
+                #inputDocumentNumber="ngModel" [(ngModel)]="customer.docNumber">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputEmail">Email</label>
+            <input type="email" class="form-control" id="inputEmail" name="inputEmail" required
+                #inputEmail="ngModel" [(ngModel)]="customer.email">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="inputMobile">Mobile</label>
+            <input type="text" class="form-control" id="inputMobile" name="inputMobile" required
+                #inputMobile="ngModel" [(ngModel)]="customer.mobile">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputPhone">Phone</label>
+            <input type="text" class="form-control" id="inputPhone" name="inputPhone" required
+                #inputPhone="ngModel" [(ngModel)]="customer.phone">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputMonthlyAmount">Monthly Amount</label>
+            <input type="text" class="form-control" id="inputMonthlyAmount" name="inputMonthlyAmount" required
+                #inputMonthlyAmount="ngModel" [(ngModel)]="customer.monthlyAmount">
+        </div>
+    </div>
+    <div class="btn-group btn-group-sm" role="group">
+        <button type="submit" class="btn btn-warning">Edit customer</button>
+    </div>
+    <div class="btn-group btn-group-sm float-right" role="group">
+        <button type="button" class="btn btn-secondary" (click)="back()">Back</button>
+    </div>
+</form>

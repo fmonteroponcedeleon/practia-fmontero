@@ -1,0 +1,49 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" ngNativeValidate>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputFirstName">First Name</label>
+            <input type="text" class="form-control" id="inputFirstName" 
+            name="inputFirstName" ngModel required #inputFirstName="ngModel">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputLastName">Last Name</label>
+            <input type="text" class="form-control" id="inputLastName"
+            name="inputLastName" ngModel required #inputLastName="ngModel">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputDocumentNumber">Uruguayan Document Number</label>
+            <input type="text" class="form-control" id="inputDocumentNumber"
+            name="inputDocumentNumber" ngModel required #inputDocumentNumber="ngModel">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputEmail">Email</label>
+            <input type="email" class="form-control" id="inputEmail"
+            name="inputEmail" ngModel required #inputEmail="ngModel">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="inputMobile">Mobile</label>
+            <input type="text" class="form-control" id="inputMobile"
+            name="inputMobile" ngModel required #inputMobile="ngModel">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputPhone">Phone</label>
+            <input type="text" class="form-control" id="inputPhone"
+            name="inputPhone" ngModel required #inputPhone="ngModel">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputMonthlyAmount">Monthly Amount</label>
+            <input type="text" class="form-control" id="inputMonthlyAmount"
+            name="inputMonthlyAmount" ngModel required #inputMonthlyAmount="ngModel">
+        </div>
+    </div>
+    <div class="btn-group btn-group-sm" role="group">
+        <button type="submit" class="btn btn-success">Create customer</button>
+    </div>
+    <div class="btn-group btn-group-sm float-right" role="group">
+        <button type="button" class="btn btn-secondary" (click)="back()">Back</button>
+    </div>
+</form>

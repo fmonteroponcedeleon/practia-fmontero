@@ -1,0 +1,54 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "docNumber": "41231235",
+      "first_name": "Sebastian",
+      "last_name": "Eschweiler",
+      "email": "sebastian@codingthesmartway.com",
+      "mobile": "099111222",
+      "phone": "29003344",
+      "monthlyAmount": 15000
+    },
+    {
+      "id": 2,
+      "docNumber": "41112223",
+      "first_name": "Steve",
+      "last_name": "Palmer",
+      "email": "steve@codingthesmartway.com",
+      "mobile": "099333444",
+      "phone": "26004455",
+      "monthlyAmount": 32000
+    },
+    {
+      "first_name": "Ann",
+      "last_name": "Smith",
+      "docNumber": "43335556",
+      "email": "ann@codingthesmartway.com",
+      "mobile": "099666555",
+      "phone": "27001122",
+      "monthlyAmount": "68000",
+      "id": 3
+    },
+    {
+      "first_name": "Francisco",
+      "last_name": "Montero",
+      "docNumber": "44178807",
+      "email": "fmonteroponcedeleon@gmail.com",
+      "mobile": "099239100",
+      "phone": "2222222",
+      "monthlyAmount": "12000",
+      "id": 8
+    },
+    {
+      "first_name": "Walter",
+      "last_name": "White",
+      "docNumber": "46736437",
+      "email": "wwhite@breaking.com",
+      "mobile": "099111111",
+      "phone": "43437483",
+      "monthlyAmount": "3728382",
+      "id": 9
+    }
+  ]
+}
