@@ -27,6 +27,8 @@ import { ServiceNewComponent } from './components/service/service-new/service-ne
 import { ServiceEditComponent } from './components/service/service-edit/service-edit.component';
 import { ServiceCustomerComponent } from './components/service-customer/service-customer.component';
 
+import { TotalMonthlyCustomerComponent } from './components/reports/total-monthly-customer/total-monthly-customer.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +43,8 @@ import { ServiceCustomerComponent } from './components/service-customer/service-
     ServiceDetailComponent,
     ServiceNewComponent,
     ServiceEditComponent,
-    ServiceCustomerComponent
+    ServiceCustomerComponent,
+    TotalMonthlyCustomerComponent
   ],
   imports: [
     BrowserModule,

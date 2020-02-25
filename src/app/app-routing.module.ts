@@ -15,6 +15,8 @@ import { ServiceEditComponent } from './components/service/service-edit/service-
 
 import { ServiceCustomerComponent } from './components/service-customer/service-customer.component';
 
+import { TotalMonthlyCustomerComponent } from './components/reports/total-monthly-customer/total-monthly-customer.component';
+
 const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
@@ -27,7 +29,8 @@ const APP_ROUTES: Routes = [
   { path: 'service/:id', component: ServiceDetailComponent },
   { path: 'service/edit/:id', component: ServiceEditComponent },
   { path: 'service-customer', component: ServiceCustomerComponent },
-  { path: '**', pathMatch: 'full', redirectTo: 'home'}
+  { path: 'total-monthly-customer', component: TotalMonthlyCustomerComponent },
+  { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];
 
 export const APP_ROUTING = RouterModule.forRoot(APP_ROUTES);

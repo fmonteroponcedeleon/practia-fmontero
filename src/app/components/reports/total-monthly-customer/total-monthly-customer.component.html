@@ -1,0 +1,23 @@
+<h2>Importe Total Mensual por Cliente</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Cedula</th>
+            <th scope="col">Importe Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let customer of customers">
+            <th scope="row">{{ customer.fullName }}</th>
+            <td>{{ customer.documentNumber }}</td>
+            <td>
+                <div class="btn-group btn-group-sm float-right" role="group">
+                    <button type="button" class="btn btn-primary"
+                        (click)="getCustomerDetails(customer)">Detalle</button>
+                    <button type="button" class="btn btn-warning" (click)="editCustomer(customer)">Editar</button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
