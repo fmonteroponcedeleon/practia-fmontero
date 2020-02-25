@@ -39,15 +39,15 @@
                 </button>
             </div>
             <div class="modal-body">
-                ¿Esta seguro que desea {{ selectedOperation }} el servicio
+                ¿Esta seguro que desea {{ selectedOperation === 1 ? 'asociar' : 'desvincular' }} el servicio
                 {{ !!selectedService && !!selectedService.name ? selectedService.name : '' }}
                 con el cliente
                 {{ !!selectedCustomer && !!selectedCustomer.fullName ? selectedCustomer.fullName : '' }}?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 <button type="button" class="btn btn-primary" data-dismiss="modal"
-                    (click)="associateServiceCustomer()">Save changes</button>
+                    (click)="associateServiceCustomer()">Confirmar</button>
             </div>
         </div>
     </div>

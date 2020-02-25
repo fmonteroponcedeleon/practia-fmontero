@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
+import { ToastrModule } from 'ngx-toastr';
+
 import { APP_ROUTING } from './app-routing.module';
 
 import { BusinessService } from './services/business.service';
@@ -47,7 +49,8 @@ import { ServiceCustomerComponent } from './components/service-customer/service-
     HttpClientModule,
     APP_ROUTING,
     CommonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     BusinessService

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { BusinessService } from 'src/app/services/business.service';
+import { ToastrService } from 'ngx-toastr';
 
 import { Customer } from 'src/app/models/customer';
 import { Service } from 'src/app/models/service';
@@ -26,7 +27,8 @@ export class ServiceCustomerComponent implements OnInit {
 
   constructor(
     private businessService: BusinessService,
-    private router: Router) { }
+    private router: Router,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.getServices();
@@ -104,11 +106,12 @@ export class ServiceCustomerComponent implements OnInit {
             this.businessService.desassociateServiceCustomer(serviceCustomerExistent.id).subscribe(
               (serviceResultDesassociate: any) => {
                 console.log('serviceResultDesassociate', serviceResultDesassociate);
-                // toastr.info('Desvinculación exitosa!')
+                this.toastr.success('Desvinculación exitosa!');
               }
             );
           } else {
             // TODO: Show alert to notify the user about this serviceCustomer association already exist
+            this.toastr.error('Este servicio ya se encuentra vinculado a este cliente!');
           }
         } else {
           if (this.selectedOperation === this.operations.Associate) {
@@ -117,10 +120,12 @@ export class ServiceCustomerComponent implements OnInit {
             this.businessService.associateServiceCustomer(this.selectedService.id, this.selectedCustomer.id, today).subscribe(
               (serviceResultAssociate: any) => {
                 console.log('serviceResultAssociate', serviceResultAssociate);
+                this.toastr.success('Asociación exitosa!');
               }
             );
           } else {
             // TODO: Show alert to notify the user about NOTHING to DESASSIOCIATE!
+            this.toastr.info('Nada para desvincular! Actualmente este servicio no esta vinculado a este cliente');
           }
         }
       }
