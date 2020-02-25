@@ -72,6 +72,12 @@
       "clienteId": 2,
       "fechaAsociado": "2020-02-25T08:47:05.676Z",
       "id": 1
+    },
+    {
+      "servicioId": 2,
+      "clienteId": 2,
+      "fechaAsociado": "2020-02-25T18:31:22.351Z",
+      "id": 2
     }
   ]
 }

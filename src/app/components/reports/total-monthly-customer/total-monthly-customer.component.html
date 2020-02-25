@@ -4,20 +4,17 @@
         <tr>
             <th scope="col">Nombre</th>
             <th scope="col">Cedula</th>
+            <th scope="col">Mes/Año</th>
             <th scope="col">Importe Total</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let customer of customers">
-            <th scope="row">{{ customer.fullName }}</th>
-            <td>{{ customer.documentNumber }}</td>
-            <td>
-                <div class="btn-group btn-group-sm float-right" role="group">
-                    <button type="button" class="btn btn-primary"
-                        (click)="getCustomerDetails(customer)">Detalle</button>
-                    <button type="button" class="btn btn-warning" (click)="editCustomer(customer)">Editar</button>
-                </div>
-            </td>
+        <tr *ngFor="let totalMonthlyCustomer of totalMonthlyCustomers">
+            <th scope="row">{{ totalMonthlyCustomer.fullName }}</th>
+            <td>{{ totalMonthlyCustomer.documentNumber }}</td>
+            <td>{{ totalMonthlyCustomer.month + '/' + totalMonthlyCustomer.year }}</td>
+            <td>{{ totalMonthlyCustomer.totalAmount }}</td>
+            
         </tr>
     </tbody>
 </table>
