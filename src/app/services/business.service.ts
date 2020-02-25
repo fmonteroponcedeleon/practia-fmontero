@@ -25,7 +25,7 @@ export class BusinessService {
     return this.http.get<Customer>(this.apiUrl + '/cliente/' + customerId);
   }
 
-  createCustomer(fullName: string, documentNumber: string, address: string, phone: string, dateOfBirth: string) {
+  createCustomer(fullName: string, documentNumber: string, address: string, phone: string, dateOfBirth: string): Observable<string> {
     const body = JSON.stringify({
       nombreCompleto: fullName,
       cedula: documentNumber,
@@ -36,7 +36,7 @@ export class BusinessService {
     return this.http.post<string>(this.apiUrl + '/cliente/', body, { headers: this.headers });
   }
 
-  editCustomer(customer: Customer) {
+  editCustomer(customer: Customer): Observable<string> {
     const body = JSON.stringify({
       nombreCompleto: customer.fullName,
       cedula: customer.documentNumber,
@@ -47,7 +47,7 @@ export class BusinessService {
     return this.http.put<string>(this.apiUrl + '/cliente/' + customer.id, body, { headers: this.headers });
   }
 
-  deleteCustomer(customerId: number) {
+  deleteCustomer(customerId: number): Observable<string> {
     return this.http.delete<string>(this.apiUrl + '/cliente/' + customerId);
   }
 
@@ -59,7 +59,7 @@ export class BusinessService {
     return this.http.get<Service>(this.apiUrl + '/servicios/' + serviceId);
   }
 
-  createService(name: string, monthlyFee: number) {
+  createService(name: string, monthlyFee: number): Observable<string> {
     const body = JSON.stringify({
       nombre: name,
       cuotaMensual: monthlyFee
@@ -67,7 +67,7 @@ export class BusinessService {
     return this.http.post<string>(this.apiUrl + '/servicios/', body, { headers: this.headers });
   }
 
-  editService(service: Service) {
+  editService(service: Service): Observable<string> {
     const body = JSON.stringify({
       nombre: service.name,
       cuotaMensual: service.monthlyFee
@@ -75,8 +75,25 @@ export class BusinessService {
     return this.http.put<string>(this.apiUrl + '/servicios/' + service.id, body, { headers: this.headers });
   }
 
-  deleteService(serviceId: number) {
+  deleteService(serviceId: number): Observable<string> {
     return this.http.delete<string>(this.apiUrl + '/servicios/' + serviceId);
+  }
+
+  associateServiceCustomer(serviceId: number, customerId: number, dateOfAssociation: Date): Observable<string> {
+    const body = JSON.stringify({
+      servicioId: serviceId,
+      clienteId: customerId,
+      fechaAsociado: dateOfAssociation
+    });
+    return this.http.post<string>(this.apiUrl + '/clienteServicio/', body, { headers: this.headers });
+  }
+
+  desassociateServiceCustomer(serviceCustomerId: number): Observable<string> {
+    return this.http.delete<string>(this.apiUrl + '/clienteServicio/' + serviceCustomerId);
+  }
+
+  getServiceCustomer(): Observable<string> {
+    return this.http.get<string>(this.apiUrl + '/clienteServicio');
   }
 
 }

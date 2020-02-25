@@ -68,9 +68,10 @@
   ],
   "clienteServicio": [
     {
-      "clienteId": 0,
-      "servicioId": 0,
-      "fechaAsociado": "2019-10-30"
+      "servicioId": 2,
+      "clienteId": 2,
+      "fechaAsociado": "2020-02-24T22:30:22.128Z",
+      "id": 2
     }
   ]
 }

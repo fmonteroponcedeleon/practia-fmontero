@@ -21,7 +21,6 @@ export class CustomerListComponent implements OnInit {
   ngOnInit(): void {
     this.businessService.getCustomers().subscribe(
       (serviceResult: any[]) => {
-        console.log(serviceResult);
         this.customers = serviceResult.map((c: any) => {
           return {
             id: c.id,

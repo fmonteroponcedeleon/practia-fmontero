@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { APP_ROUTING } from './app-routing.module';
@@ -21,6 +23,7 @@ import { ServiceListComponent } from './components/service/service-list/service-
 import { ServiceDetailComponent } from './components/service/service-detail/service-detail.component';
 import { ServiceNewComponent } from './components/service/service-new/service-new.component';
 import { ServiceEditComponent } from './components/service/service-edit/service-edit.component';
+import { ServiceCustomerComponent } from './components/service-customer/service-customer.component';
 
 @NgModule({
   declarations: [
@@ -35,13 +38,16 @@ import { ServiceEditComponent } from './components/service/service-edit/service-
     ServiceListComponent,
     ServiceDetailComponent,
     ServiceNewComponent,
-    ServiceEditComponent
+    ServiceEditComponent,
+    ServiceCustomerComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    APP_ROUTING
+    APP_ROUTING,
+    CommonModule,
+    BrowserAnimationsModule
   ],
   providers: [
     BusinessService
