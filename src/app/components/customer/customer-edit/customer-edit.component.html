@@ -1,45 +1,47 @@
-<h2>Editar Cliente</h2>
-<form #f="ngForm" (ngSubmit)="onSubmit()" ngNativeValidate>
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="inputFullName">Nombre</label>
-            <input type="text" class="form-control" id="inputFullName" name="inputFullName" required
-                #inputFullName="ngModel" [(ngModel)]="customer.fullName">
-        </div>
-        <div class="form-group col-md-6">
-            <label for="inputDocumentNumber">Cedula</label>
-            <input type="number" class="form-control" id="inputDocumentNumber" name="inputDocumentNumber" required
-                #inputDocumentNumber="ngModel" [(ngModel)]="customer.documentNumber" min="1000000" max="100000000"
-                (ngModelChange)="validateUruguayanDocumentNumber($event)">
-            <div *ngIf="!isValidUruguayanDocNumber || inputDocumentNumber.invalid && (inputDocumentNumber.dirty || inputDocumentNumber.touched)"
-                class="alert alert-danger">
-                <div>
-                    {{ errorDesc }}
+<div class="animated fadeIn fast">
+    <h2>Editar Cliente</h2>
+    <form #f="ngForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputFullName">Nombre</label>
+                <input type="text" class="form-control" id="inputFullName" name="inputFullName" required
+                    #inputFullName="ngModel" [(ngModel)]="customer.fullName">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputDocumentNumber">Cedula</label>
+                <input type="number" class="form-control" id="inputDocumentNumber" name="inputDocumentNumber" required
+                    #inputDocumentNumber="ngModel" [(ngModel)]="customer.documentNumber" min="1000000" max="100000000"
+                    (ngModelChange)="validateUruguayanDocumentNumber($event)">
+                <div *ngIf="!isValidUruguayanDocNumber || inputDocumentNumber.invalid && (inputDocumentNumber.dirty || inputDocumentNumber.touched)"
+                    class="alert alert-danger">
+                    <div>
+                        {{ errorDesc }}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="inputAddress">Dirección</label>
-            <input type="text" class="form-control" id="inputAddress" name="inputAddress" required
-                #inputAddress="ngModel" [(ngModel)]="customer.address">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputAddress">Dirección</label>
+                <input type="text" class="form-control" id="inputAddress" name="inputAddress" required
+                    #inputAddress="ngModel" [(ngModel)]="customer.address">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="inputPhone">Teléfono</label>
+                <input type="tel" class="form-control" id="inputPhone" name="inputPhone" required #inputPhone="ngModel"
+                    [(ngModel)]="customer.phone">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="inputDateOfBirth">Fecha de Nacimiento</label>
+                <input type="date" class="form-control" id="inputDateOfBirth" name="inputDateOfBirth" required
+                    #inputDateOfBirth="ngModel" [(ngModel)]="customer.dateOfBirth">
+            </div>
         </div>
-        <div class="form-group col-md-3">
-            <label for="inputPhone">Teléfono</label>
-            <input type="tel" class="form-control" id="inputPhone" name="inputPhone" required #inputPhone="ngModel"
-                [(ngModel)]="customer.phone">
+        <div class="btn-group btn-group-sm" role="group">
+            <button type="button" class="btn btn-secondary" (click)="back()">Volver</button>
         </div>
-        <div class="form-group col-md-3">
-            <label for="inputDateOfBirth">Fecha de Nacimiento</label>
-            <input type="date" class="form-control" id="inputDateOfBirth" name="inputDateOfBirth" required
-                #inputDateOfBirth="ngModel" [(ngModel)]="customer.dateOfBirth">
+        <div class="btn-group btn-group-sm float-right" role="group">
+            <button type="submit" class="btn btn-warning">Editar Cliente</button>
         </div>
-    </div>
-    <div class="btn-group btn-group-sm" role="group">
-        <button type="button" class="btn btn-secondary" (click)="back()">Volver</button>
-    </div>
-    <div class="btn-group btn-group-sm float-right" role="group">
-        <button type="submit" class="btn btn-warning">Editar Cliente</button>
-    </div>
-</form>
+    </form>
+</div>

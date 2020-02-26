@@ -64,9 +64,9 @@
       "cuotaMensual": 200
     },
     {
-      "id": 2,
       "nombre": "Seguro Auto",
-      "cuotaMensual": 100
+      "cuotaMensual": 100,
+      "id": 2
     },
     {
       "id": 3,

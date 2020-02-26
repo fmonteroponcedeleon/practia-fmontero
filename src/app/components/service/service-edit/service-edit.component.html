@@ -1,21 +1,23 @@
-<h2>Editar Servicio</h2>
-<form #f="ngForm" (ngSubmit)="onSubmit()" ngNativeValidate>
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="inputName">Nombre</label>
-            <input type="text" class="form-control" id="inputName" name="inputName" required #inputName="ngModel"
-                [(ngModel)]="service.name">
+<div class="animated fadeIn fast">
+    <h2>Editar Servicio</h2>
+    <form #f="ngForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputName">Nombre</label>
+                <input type="text" class="form-control" id="inputName" name="inputName" required #inputName="ngModel"
+                    [(ngModel)]="service.name">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputMonthlyFee">Cuota Mensual</label>
+                <input type="text" class="form-control" id="inputMonthlyFee" name="inputMonthlyFee" required
+                    #inputMonthlyFee="ngModel" [(ngModel)]="service.monthlyFee">
+            </div>
         </div>
-        <div class="form-group col-md-6">
-            <label for="inputMonthlyFee">Cuota Mensual</label>
-            <input type="text" class="form-control" id="inputMonthlyFee" name="inputMonthlyFee" required
-                #inputMonthlyFee="ngModel" [(ngModel)]="service.monthlyFee">
+        <div class="btn-group btn-group-sm" role="group">
+            <button type="button" class="btn btn-secondary" (click)="back()">Volver</button>
         </div>
-    </div>
-    <div class="btn-group btn-group-sm" role="group">
-        <button type="button" class="btn btn-secondary" (click)="back()">Volver</button>
-    </div>
-    <div class="btn-group btn-group-sm float-right" role="group">
-        <button type="submit" class="btn btn-warning">Editar Servicio</button>
-    </div>
-</form>
+        <div class="btn-group btn-group-sm float-right" role="group">
+            <button type="submit" class="btn btn-warning">Editar Servicio</button>
+        </div>
+    </form>
+</div>
