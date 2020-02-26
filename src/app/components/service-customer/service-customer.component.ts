@@ -82,11 +82,6 @@ export class ServiceCustomerComponent implements OnInit {
   }
 
   associateServiceCustomer(): void {
-    console.log('selectedOperation', this.selectedOperation);
-    console.log('selectedService', this.selectedService);
-    console.log('selectedCustomer', this.selectedCustomer);
-
-
     this.businessService.getServiceCustomer().subscribe(
       (serviceResultGet: any) => {
         this.servicesCustomers = serviceResultGet.map((sc: any) => {
@@ -97,34 +92,26 @@ export class ServiceCustomerComponent implements OnInit {
             dateOfAssociation: sc.fechaAsociado
           };
         });
-        console.log('servicesCustomers', this.servicesCustomers);
         const serviceCustomerExistent = this.isServiceCustomerExist();
-        console.log('serviceCustomerExistent', serviceCustomerExistent);
         if (!!serviceCustomerExistent) {
           if (this.selectedOperation === this.operations.Disassociate) {
-            // TODO: Call service to DELETE serviceCustomer association
             this.businessService.desassociateServiceCustomer(serviceCustomerExistent.id).subscribe(
               (serviceResultDesassociate: any) => {
-                console.log('serviceResultDesassociate', serviceResultDesassociate);
                 this.toastr.success('Desvinculación exitosa!');
               }
             );
           } else {
-            // TODO: Show alert to notify the user about this serviceCustomer association already exist
             this.toastr.error('Este servicio ya se encuentra vinculado a este cliente!');
           }
         } else {
           if (this.selectedOperation === this.operations.Associate) {
-            // TODO: Call service to CREATE serviceCustomer association
             const today = new Date();
             this.businessService.associateServiceCustomer(this.selectedService.id, this.selectedCustomer.id, today).subscribe(
               (serviceResultAssociate: any) => {
-                console.log('serviceResultAssociate', serviceResultAssociate);
                 this.toastr.success('Asociación exitosa!');
               }
             );
           } else {
-            // TODO: Show alert to notify the user about NOTHING to DESASSIOCIATE!
             this.toastr.info('Nada para desvincular! Actualmente este servicio no esta vinculado a este cliente');
           }
         }

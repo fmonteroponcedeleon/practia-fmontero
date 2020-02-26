@@ -50,7 +50,6 @@ export class TotalMonthlyCustomerComponent implements OnInit {
             dateOfBirth: c.fechaNacimiento
           };
         });
-        console.log('customers', this.customers);
         this.isLoadingCustomers = false;
         if (this.isLoadingFinished()) {
           this.calculateTotalMonthlyAmountPerCustomer();
@@ -74,7 +73,6 @@ export class TotalMonthlyCustomerComponent implements OnInit {
             monthlyFee: s.cuotaMensual
           };
         });
-        console.log('services', this.services);
         this.isLoadingServices = false;
         if (this.isLoadingFinished()) {
           this.calculateTotalMonthlyAmountPerCustomer();
@@ -99,7 +97,6 @@ export class TotalMonthlyCustomerComponent implements OnInit {
             dateOfAssociation: sc.fechaAsociado
           };
         });
-        console.log('serviceCustomers', this.servicesCustomers);
         this.isLoadingServiceCustomers = false;
         if (this.isLoadingFinished()) {
           this.calculateTotalMonthlyAmountPerCustomer();
@@ -118,7 +115,6 @@ export class TotalMonthlyCustomerComponent implements OnInit {
   }
 
   calculateTotalMonthlyAmountPerCustomer(): void {
-    console.log('calculateTotalMonthlyAmountPerCustomer');
     for (let i = 0; i < this.customers.length; i++) {
       for (let j = 0; j < this.servicesCustomers.length; j++) {
         if (this.customers[i].id === this.servicesCustomers[j].customerId) {
@@ -140,7 +136,6 @@ export class TotalMonthlyCustomerComponent implements OnInit {
             totalMonthlyCustomer.fullName = this.customers[i].fullName;
             totalMonthlyCustomer.documentNumber = this.customers[i].documentNumber;
             totalMonthlyCustomer.totalAmount = serviceMonthlyFee;
-            console.log('serviceCustomer', serviceCustomer);
             totalMonthlyCustomer.month = new Date(serviceCustomer.dateOfAssociation).getMonth() + 1;
             totalMonthlyCustomer.year = new Date(serviceCustomer.dateOfAssociation).getFullYear();
             this.totalMonthlyCustomers.push(totalMonthlyCustomer);
@@ -148,7 +143,6 @@ export class TotalMonthlyCustomerComponent implements OnInit {
         }
       }
     }
-    console.log('totalMonthlyCustomers', this.totalMonthlyCustomers);
   }
 
   sortTypePosted(name: string): void {

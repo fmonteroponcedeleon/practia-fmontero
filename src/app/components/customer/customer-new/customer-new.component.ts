@@ -37,10 +37,6 @@ export class CustomerNewComponent implements OnInit {
 
   validateUruguayanDocumentNumber(docNumber: number): void {
     const ciNumber = !!docNumber ? docNumber.toString() : '';
-    console.log('docNumber', docNumber);
-    console.log('ciNumber', ciNumber);
-
-    //Initial control about the length of the ciNumber 
     if (ciNumber.length === 8 || ciNumber.length === 7) {
 
       let _formula: number[] = [2, 9, 8, 7, 6, 3, 4];
