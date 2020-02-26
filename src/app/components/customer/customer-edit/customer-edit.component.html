@@ -8,8 +8,15 @@
         </div>
         <div class="form-group col-md-6">
             <label for="inputDocumentNumber">Cedula</label>
-            <input type="text" class="form-control" id="inputDocumentNumber" name="inputDocumentNumber" required
-                #inputDocumentNumber="ngModel" [(ngModel)]="customer.documentNumber">
+            <input type="number" class="form-control" id="inputDocumentNumber" name="inputDocumentNumber" required
+                #inputDocumentNumber="ngModel" [(ngModel)]="customer.documentNumber" min="1000000" max="100000000"
+                (ngModelChange)="validateUruguayanDocumentNumber($event)">
+            <div *ngIf="!isValidUruguayanDocNumber || inputDocumentNumber.invalid && (inputDocumentNumber.dirty || inputDocumentNumber.touched)"
+                class="alert alert-danger">
+                <div>
+                    {{ errorDesc }}
+                </div>
+            </div>
         </div>
     </div>
     <div class="form-row">
@@ -20,7 +27,7 @@
         </div>
         <div class="form-group col-md-3">
             <label for="inputPhone">Teléfono</label>
-            <input type="text" class="form-control" id="inputPhone" name="inputPhone" required #inputPhone="ngModel"
+            <input type="tel" class="form-control" id="inputPhone" name="inputPhone" required #inputPhone="ngModel"
                 [(ngModel)]="customer.phone">
         </div>
         <div class="form-group col-md-3">

@@ -47,6 +47,14 @@
       "direccion": "Domingo Aramburu 1561",
       "telefono": "22012457",
       "fechaNacimiento": "1990-10-30"
+    },
+    {
+      "nombreCompleto": "Francisco Montero",
+      "cedula": 44178807,
+      "direccion": "Melitón González 1225/106",
+      "telefono": "099239100",
+      "fechaNacimiento": "1982-10-17",
+      "id": 7
     }
   ],
   "servicios": [
