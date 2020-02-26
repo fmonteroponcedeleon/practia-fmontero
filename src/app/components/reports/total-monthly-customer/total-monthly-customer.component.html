@@ -2,19 +2,37 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">Cedula</th>
+            <th scope="col">
+                <a (click)="sortTypePosted('fullName')" class="sort_caret">Nombre
+                    <span *ngIf="sortPropPosted !== 'fullName'" class="placeholder_caret"></span>
+                    <span *ngIf="sortPropPosted === 'fullName' && sortReversePosted" class="fa fa-caret-down"></span>
+                    <span *ngIf="sortPropPosted === 'fullName' && !sortReversePosted" class="fa fa-caret-up"></span>
+                </a>
+            </th>
+            <th scope="col">
+                <a (click)="sortTypePosted('documentNumber')" class="sort_caret">Cedula
+                    <span *ngIf="sortPropPosted !== 'documentNumber'" class="placeholder_caret"></span>
+                    <span *ngIf="sortPropPosted === 'documentNumber' && sortReversePosted" class="fa fa-caret-down"></span>
+                    <span *ngIf="sortPropPosted === 'documentNumber' && !sortReversePosted" class="fa fa-caret-up"></span>
+                </a>
+            </th>
             <th scope="col">Mes/Año</th>
-            <th scope="col">Importe Total</th>
+            <th scope="col">
+                <a (click)="sortTypePosted('totalAmount')" class="sort_caret">Importe Total
+                    <span *ngIf="sortPropPosted !== 'totalAmount'" class="placeholder_caret"></span>
+                    <span *ngIf="sortPropPosted === 'totalAmount' && sortReversePosted" class="fa fa-caret-down"></span>
+                    <span *ngIf="sortPropPosted === 'totalAmount' && !sortReversePosted" class="fa fa-caret-up"></span>
+                </a>
+            </th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let totalMonthlyCustomer of totalMonthlyCustomers">
+        <tr *ngFor="let totalMonthlyCustomer of totalMonthlyCustomers | orderBy: sortPropPosted : sortReversePosted : true">
             <th scope="row">{{ totalMonthlyCustomer.fullName }}</th>
             <td>{{ totalMonthlyCustomer.documentNumber }}</td>
             <td>{{ totalMonthlyCustomer.month + '/' + totalMonthlyCustomer.year }}</td>
             <td>{{ totalMonthlyCustomer.totalAmount }}</td>
-            
+
         </tr>
     </tbody>
 </table>

@@ -86,6 +86,24 @@
       "clienteId": 2,
       "fechaAsociado": "2020-02-25T18:31:22.351Z",
       "id": 2
+    },
+    {
+      "servicioId": 3,
+      "clienteId": 4,
+      "fechaAsociado": "2020-02-26T03:09:35.369Z",
+      "id": 3
+    },
+    {
+      "servicioId": 2,
+      "clienteId": 5,
+      "fechaAsociado": "2020-02-26T03:10:01.252Z",
+      "id": 4
+    },
+    {
+      "servicioId": 2,
+      "clienteId": 7,
+      "fechaAsociado": "2020-02-26T03:10:09.528Z",
+      "id": 5
     }
   ]
 }

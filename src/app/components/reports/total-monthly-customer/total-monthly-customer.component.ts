@@ -23,6 +23,9 @@ export class TotalMonthlyCustomerComponent implements OnInit {
   public isLoadingServices = false;
   public isLoadingServiceCustomers = false;
 
+  public sortPropPosted = 'fullName';
+  public sortReversePosted = false;
+
   constructor(private businessService: BusinessService) { }
 
   ngOnInit() {
@@ -144,5 +147,10 @@ export class TotalMonthlyCustomerComponent implements OnInit {
       }
     }
     console.log('totalMonthlyCustomers', this.totalMonthlyCustomers);
+  }
+
+  sortTypePosted(name: string): void {
+    this.sortReversePosted = this.sortPropPosted === name ? !this.sortReversePosted : false;
+    this.sortPropPosted = name;
   }
 }

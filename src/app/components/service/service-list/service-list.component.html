@@ -2,13 +2,25 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">Cuota Mensual</th>
+            <th scope="col">
+                <a (click)="sortTypePosted('name')" class="sort_caret">Nombre
+                    <span *ngIf="sortPropPosted !== 'name'" class="placeholder_caret"></span>
+                    <span *ngIf="sortPropPosted === 'name' && sortReversePosted" class="fa fa-caret-down"></span>
+                    <span *ngIf="sortPropPosted === 'name' && !sortReversePosted" class="fa fa-caret-up"></span>
+                </a>
+            </th>
+            <th scope="col">
+                <a (click)="sortTypePosted('monthlyFee')" class="sort_caret">Cuota Mensual
+                    <span *ngIf="sortPropPosted !== 'monthlyFee'" class="placeholder_caret"></span>
+                    <span *ngIf="sortPropPosted === 'monthlyFee' && sortReversePosted" class="fa fa-caret-down"></span>
+                    <span *ngIf="sortPropPosted === 'monthlyFee' && !sortReversePosted" class="fa fa-caret-up"></span>
+                </a>
+            </th>
             <th><button type="button" class="btn btn-success float-right" (click)="createService()">Nuevo</button></th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let service of services">
+        <tr *ngFor="let service of services | orderBy: sortPropPosted : sortReversePosted : true">
             <th scope="row">{{ service.name }}</th>
             <td>{{ service.monthlyFee }}</td>
             <td>

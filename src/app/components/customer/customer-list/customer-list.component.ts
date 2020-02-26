@@ -14,6 +14,9 @@ export class CustomerListComponent implements OnInit {
 
   public customers: Customer[] = [];
 
+  public sortPropPosted = 'fullName';
+  public sortReversePosted = false;
+
   constructor(
     private businessService: BusinessService,
     private router: Router) { }
@@ -54,5 +57,10 @@ export class CustomerListComponent implements OnInit {
 
   editCustomer(customer: Customer) {
     this.router.navigate(['/customer/edit/' + customer.id]);
+  }
+
+  sortTypePosted(name: string): void {
+    this.sortReversePosted = this.sortPropPosted === name ? !this.sortReversePosted : false;
+    this.sortPropPosted = name;
   }
 }

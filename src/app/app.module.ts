@@ -6,6 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ToastrModule } from 'ngx-toastr';
+import { OrderModule } from 'ngx-order-pipe';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { APP_ROUTING } from './app-routing.module';
 
@@ -53,7 +55,9 @@ import { TotalMonthlyCustomerComponent } from './components/reports/total-monthl
     APP_ROUTING,
     CommonModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    OrderModule,
+    AngularFontAwesomeModule
   ],
   providers: [
     BusinessService
