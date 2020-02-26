@@ -17,6 +17,8 @@ export class CustomerListComponent implements OnInit {
   public sortPropPosted = 'fullName';
   public sortReversePosted = false;
 
+  public term: string;
+
   constructor(
     private businessService: BusinessService,
     private router: Router) { }

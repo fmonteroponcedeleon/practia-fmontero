@@ -1,4 +1,11 @@
 <h2>Importe Total Mensual por Cliente</h2>
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Buscar" [(ngModel)]="term">
+        </div>
+    </div>
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -27,7 +34,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let totalMonthlyCustomer of totalMonthlyCustomers | orderBy: sortPropPosted : sortReversePosted : true">
+        <tr *ngFor="let totalMonthlyCustomer of totalMonthlyCustomers | orderBy: sortPropPosted : sortReversePosted : true | filter: term">
             <th scope="row">{{ totalMonthlyCustomer.fullName }}</th>
             <td>{{ totalMonthlyCustomer.documentNumber }}</td>
             <td>{{ totalMonthlyCustomer.month + '/' + totalMonthlyCustomer.year }}</td>

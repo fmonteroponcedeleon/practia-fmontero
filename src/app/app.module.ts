@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { OrderModule } from 'ngx-order-pipe';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { APP_ROUTING } from './app-routing.module';
 
@@ -57,7 +58,8 @@ import { TotalMonthlyCustomerComponent } from './components/reports/total-monthl
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     OrderModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    Ng2SearchPipeModule
   ],
   providers: [
     BusinessService

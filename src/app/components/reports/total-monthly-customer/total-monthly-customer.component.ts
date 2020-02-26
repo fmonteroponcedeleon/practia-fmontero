@@ -26,6 +26,8 @@ export class TotalMonthlyCustomerComponent implements OnInit {
   public sortPropPosted = 'fullName';
   public sortReversePosted = false;
 
+  public term: string;
+
   constructor(private businessService: BusinessService) { }
 
   ngOnInit() {

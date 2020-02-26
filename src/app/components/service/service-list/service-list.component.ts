@@ -17,6 +17,8 @@ export class ServiceListComponent implements OnInit {
   public sortPropPosted = 'name';
   public sortReversePosted = false;
 
+  public term: string;
+
   constructor(
     private businessService: BusinessService,
     private router: Router) { }
