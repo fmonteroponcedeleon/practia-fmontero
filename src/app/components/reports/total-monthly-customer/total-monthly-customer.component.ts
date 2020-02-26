@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { BusinessService } from 'src/app/services/business.service';
+import { ToastrService } from 'ngx-toastr';
 
 import { Customer } from 'src/app/models/customer';
 import { Service } from 'src/app/models/service';
@@ -28,14 +29,19 @@ export class TotalMonthlyCustomerComponent implements OnInit {
 
   public term: string;
 
-  constructor(private businessService: BusinessService) { }
+  constructor(
+    private businessService: BusinessService,
+    private toastr: ToastrService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getCustomers();
     this.getServices();
     this.getServiceCustomer();
   }
 
+  /**
+   * Responsible to retrieve the customers
+   */
   getCustomers(): void {
     this.isLoadingCustomers = true;
     this.businessService.getCustomers().subscribe(
@@ -56,12 +62,15 @@ export class TotalMonthlyCustomerComponent implements OnInit {
         }
       },
       error => {
-        // TODO: Handling error
         this.isLoadingCustomers = false;
+        this.toastr.error('Se produjo un error y no se pudieron recuperar los clientes');
       }
     );
   }
 
+  /**
+   * Responsible to retrieve the services
+   */
   getServices(): void {
     this.isLoadingServices = true;
     this.businessService.getServices().subscribe(
@@ -79,12 +88,15 @@ export class TotalMonthlyCustomerComponent implements OnInit {
         }
       },
       error => {
-        // TODO: Handling error
         this.isLoadingServices = false;
+        this.toastr.error('Se produjo un error y no se pudieron recuperar los servicios');
       }
     );
   }
 
+  /**
+   * Responsible to retrieve the associations between services and customers
+   */
   getServiceCustomer(): void {
     this.isLoadingServiceCustomers = true;
     this.businessService.getServiceCustomer().subscribe(
@@ -103,17 +115,23 @@ export class TotalMonthlyCustomerComponent implements OnInit {
         }
       },
       error => {
-        // TODO: Handling error
         this.isLoadingServiceCustomers = false;
+        this.toastr.error('Se produjo un error y no se pudieron recuperar los servicios');
       }
     );
   }
 
+  /**
+   * Check if the loaders finished
+   */
   isLoadingFinished(): boolean {
     return !this.isLoadingCustomers && !this.isLoadingServices
       && !this.isLoadingServiceCustomers ? true : false;
   }
 
+  /**
+   * Responsible to calculate the total monthly amount per customer
+   */
   calculateTotalMonthlyAmountPerCustomer(): void {
     for (let i = 0; i < this.customers.length; i++) {
       for (let j = 0; j < this.servicesCustomers.length; j++) {
@@ -145,6 +163,10 @@ export class TotalMonthlyCustomerComponent implements OnInit {
     }
   }
 
+  /**
+   * Responsible to mange the sorting information
+   * @param name to sort
+   */
   sortTypePosted(name: string): void {
     this.sortReversePosted = this.sortPropPosted === name ? !this.sortReversePosted : false;
     this.sortPropPosted = name;

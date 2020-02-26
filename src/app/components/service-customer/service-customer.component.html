@@ -1,56 +1,53 @@
-<div class="animated fadeIn fast">
-    <h2>Asociar/Desvincular Servicio a Cliente</h2>
-    <hr>
-    <div class="form-row">
-        <div class="form-group col-md-4">
-            <label for="inputState">Operacion</label>
-            <select id="inputState" class="form-control" [(ngModel)]="selectedOperation"
-                (change)="onOperationChanged()">
-                <option [ngValue]="operations.Associate">Asociar</option>
-                <option [ngValue]="operations.Disassociate">Desvincular</option>
-            </select>
-        </div>
-        <div class="form-group col-md-4">
-            <label for="inputState">Servicio</label>
-            <select id="inputState" class="form-control" [(ngModel)]="selectedService" (change)="onServiceChanged()">
-                <option *ngFor="let service of services" [ngValue]="service">{{ service.name }}</option>
-            </select>
-        </div>
-        <div class="form-group col-md-4">
-            <label for="inputState">Cliente</label>
-            <select id="inputState" class="form-control" [(ngModel)]="selectedCustomer" (change)="onCustomerChanged()">
-                <option *ngFor="let customer of customers" [ngValue]="customer">{{ customer.fullName }}</option>
-            </select>
-        </div>
+<h2>Asociar/Desvincular Servicio a Cliente</h2>
+<hr>
+<div class="form-row">
+    <div class="form-group col-md-4">
+        <label for="inputState">Operacion</label>
+        <select id="inputState" class="form-control" [(ngModel)]="selectedOperation">
+            <option [ngValue]="operations.Associate">Asociar</option>
+            <option [ngValue]="operations.Disassociate">Desvincular</option>
+        </select>
     </div>
+    <div class="form-group col-md-4">
+        <label for="inputState">Servicio</label>
+        <select id="inputState" class="form-control" [(ngModel)]="selectedService">
+            <option *ngFor="let service of services" [ngValue]="service">{{ service.name }}</option>
+        </select>
+    </div>
+    <div class="form-group col-md-4">
+        <label for="inputState">Cliente</label>
+        <select id="inputState" class="form-control" [(ngModel)]="selectedCustomer">
+            <option *ngFor="let customer of customers" [ngValue]="customer">{{ customer.fullName }}</option>
+        </select>
+    </div>
+</div>
 
-    <!-- Button trigger modal -->
-    <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
-        [class.disabled]="!selectedOperation || !selectedService || !selectedCustomer">
-        Asociar/Desvincular Servicio a Cliente
-    </a>
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Confirmar Operacion</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    ¿Esta seguro que desea {{ selectedOperation === 1 ? 'asociar' : 'desvincular' }} el servicio
-                    {{ !!selectedService && !!selectedService.name ? selectedService.name : '' }}
-                    con el cliente
-                    {{ !!selectedCustomer && !!selectedCustomer.fullName ? selectedCustomer.fullName : '' }}?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal"
-                        (click)="associateServiceCustomer()">Confirmar</button>
-                </div>
+<!-- Button trigger modal -->
+<a type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+    [class.disabled]="!selectedOperation || !selectedService || !selectedCustomer">
+    Asociar/Desvincular Servicio a Cliente
+</a>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmar Operacion</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ¿Esta seguro que desea {{ selectedOperation === 1 ? 'asociar' : 'desvincular' }} el servicio
+                {{ !!selectedService && !!selectedService.name ? selectedService.name : '' }}
+                con el cliente
+                {{ !!selectedCustomer && !!selectedCustomer.fullName ? selectedCustomer.fullName : '' }}?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal"
+                    (click)="associateServiceCustomer()">Confirmar</button>
             </div>
         </div>
     </div>

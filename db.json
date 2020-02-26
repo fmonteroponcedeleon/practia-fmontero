@@ -88,12 +88,6 @@
       "id": 2
     },
     {
-      "servicioId": 3,
-      "clienteId": 4,
-      "fechaAsociado": "2020-02-26T03:09:35.369Z",
-      "id": 3
-    },
-    {
       "servicioId": 2,
       "clienteId": 5,
       "fechaAsociado": "2020-02-26T03:10:01.252Z",
@@ -104,6 +98,18 @@
       "clienteId": 7,
       "fechaAsociado": "2020-02-26T03:10:09.528Z",
       "id": 5
+    },
+    {
+      "servicioId": 3,
+      "clienteId": 6,
+      "fechaAsociado": "2020-02-26T06:42:17.305Z",
+      "id": 6
+    },
+    {
+      "servicioId": 3,
+      "clienteId": 5,
+      "fechaAsociado": "2020-02-26T06:42:37.245Z",
+      "id": 7
     }
   ]
 }

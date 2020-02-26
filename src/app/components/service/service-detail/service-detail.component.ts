@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { BusinessService } from 'src/app/services/business.service';
+import { ToastrService } from 'ngx-toastr';
 
 import { Service } from 'src/app/models/service';
 
@@ -18,7 +19,8 @@ export class ServiceDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private businessService: BusinessService,
-    private router: Router) { }
+    private router: Router,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -30,25 +32,31 @@ export class ServiceDetailComponent implements OnInit {
           this.service.monthlyFee = serviceResult.cuotaMensual;
         },
         error => {
-          // TODO: Handling error
+          this.toastr.error('Se produjo un error y no se pudo recuperar el detalle del servicio');
         }
       );
-
     });
   }
 
+  /**
+   * Delete a specific service
+   * @param service to delete
+   */
   deleteService(service: Service): void {
     this.businessService.deleteService(service.id).subscribe(
       (serviceResult: string) => {
+        this.toastr.success('Servicio eliminado con exito!');
         this.router.navigate(['/services']);
-        // TODO: Toastr notification!
       },
       error => {
-        // TODO: Handling error
+        this.toastr.error('Se produjo un error y no se pudo eliminar el servicio');
       }
     );
   }
 
+  /**
+   * Back to the service list view
+   */
   back(): void {
     this.router.navigate(['/services']);
   }

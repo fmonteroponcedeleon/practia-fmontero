@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { BusinessService } from '../../../services/business.service';
+import { ToastrService } from 'ngx-toastr';
 
 import { Customer } from '../../../models/customer';
 import { Router } from '@angular/router';
@@ -21,7 +22,8 @@ export class CustomerListComponent implements OnInit {
 
   constructor(
     private businessService: BusinessService,
-    private router: Router) { }
+    private router: Router,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.businessService.getCustomers().subscribe(
@@ -38,29 +40,38 @@ export class CustomerListComponent implements OnInit {
         });
       },
       error => {
-        // TODO: Handling error
+        this.toastr.error('Se produjo un error y no se pudieron recuperar los clientes');
       }
     );
   }
 
-  /*
-	 * Routes to the details of the customer selected.
-	 */
+  /**
+   * Routes to details of selected customer
+   * @param customer selected
+   */
   getCustomerDetails(customer: Customer): void {
     this.router.navigate(['/customer/' + customer.id]);
   }
 
   /**
-   * Routes to the new customer component.
+   * Routes to the new customer view
    */
   createCustomer(): void {
     this.router.navigate(['/customer/new']);
   }
 
+  /**
+   * Routes to the edit customer view with specific customer
+   * @param customer to edit
+   */
   editCustomer(customer: Customer) {
     this.router.navigate(['/customer/edit/' + customer.id]);
   }
 
+  /**
+   * Responsible to mange the sorting information
+   * @param name to sort
+   */
   sortTypePosted(name: string): void {
     this.sortReversePosted = this.sortPropPosted === name ? !this.sortReversePosted : false;
     this.sortPropPosted = name;

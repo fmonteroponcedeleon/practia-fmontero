@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { BusinessService } from 'src/app/services/business.service';
+import { ToastrService } from 'ngx-toastr';
 
 import { Customer } from 'src/app/models/customer';
 
@@ -22,7 +23,8 @@ export class CustomerEditComponent implements OnInit {
   constructor(
     private businessService: BusinessService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -37,28 +39,38 @@ export class CustomerEditComponent implements OnInit {
           this.customer.dateOfBirth = serviceResult.fechaNacimiento;
         },
         error => {
-          // TODO: Handling error
+          this.toastr.error('Se produjo un error y no se pudo recuperar el cliente');
         }
       );
     });
   }
 
-  onSubmit() {
+  /**
+   * Responsible to edit the information of a specific customer
+   */
+  onSubmit(): void {
     this.businessService.editCustomer(this.customer).subscribe(
       (serviceResult: string) => {
+        this.toastr.success('Cliente editado con exito!');
         this.router.navigate(['/customers']);
-        // TODO: Toastr notification!
       },
       error => {
-        // TODO: Handling error
+        this.toastr.error('Se produjo un error y no se pudo editar el cliente');
       }
     );
   }
 
+  /**
+   * Back to the customer list view
+   */
   back(): void {
     this.router.navigate(['/customers']);
   }
 
+  /**
+   * Responsible to validate if the document number entered by the user is a valid uruguayan document number
+   * @param docNumber to validate
+   */
   validateUruguayanDocumentNumber(docNumber: number): void {
     const ciNumber = !!docNumber ? docNumber.toString() : '';
     if (ciNumber.length === 8 || ciNumber.length === 7) {

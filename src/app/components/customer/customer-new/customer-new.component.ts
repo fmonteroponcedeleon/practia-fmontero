@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { BusinessService } from 'src/app/services/business.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-customer-new',
@@ -16,25 +17,34 @@ export class CustomerNewComponent implements OnInit {
 
   constructor(
     private businessService: BusinessService,
-    private router: Router) { }
+    private router: Router,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
   }
 
-  onSubmit(f: any) {
+  /**
+   * Responsible to create a new customer
+   * @param f form with the values entered by the user
+   */
+  onSubmit(f: any): void {
     this.businessService.createCustomer(
       f.value.inputFullName, f.value.inputDocumentNumber, f.value.inputAddress,
       f.value.inputPhone, f.value.inputDateOfBirth).subscribe(
         (serviceResult: string) => {
+          this.toastr.success('Cliente creado con exito!');
           this.router.navigate(['/customers']);
-          // TODO: Toastr notification!
         },
         error => {
-
+          this.toastr.error('Se produjo un error y no se pudo crear el cliente');
         }
       );
   }
 
+  /**
+   * Responsible to validate if the document number entered by the user is a valid uruguayan document number
+   * @param docNumber to validate
+   */
   validateUruguayanDocumentNumber(docNumber: number): void {
     const ciNumber = !!docNumber ? docNumber.toString() : '';
     if (ciNumber.length === 8 || ciNumber.length === 7) {
@@ -57,7 +67,6 @@ export class CustomerNewComponent implements OnInit {
         _numero[7] = parseInt(ciNumberAux.toString()[7].toString());
       }
 
-      //For UY CI numbers less than one million. 
       else if (ciNumber.length === 7) {
         _numero[0] = 0;
         _numero[1] = parseInt(ciNumber[0]);
@@ -95,6 +104,9 @@ export class CustomerNewComponent implements OnInit {
     }
   }
 
+  /**
+   * Back to the customer list view
+   */
   back(): void {
     this.router.navigate(['/customers']);
   }

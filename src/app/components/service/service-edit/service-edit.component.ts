@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Service } from 'src/app/models/service';
-import { BusinessService } from 'src/app/services/business.service';
 import { Router, ActivatedRoute } from '@angular/router';
+
+import { BusinessService } from 'src/app/services/business.service';
+import { ToastrService } from 'ngx-toastr';
+
+import { Service } from 'src/app/models/service';
 
 @Component({
   selector: 'app-service-edit',
@@ -16,7 +19,8 @@ export class ServiceEditComponent implements OnInit {
   constructor(
     private businessService: BusinessService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -28,26 +32,31 @@ export class ServiceEditComponent implements OnInit {
           this.service.monthlyFee = serviceResult.cuotaMensual;
         },
         error => {
-          // TODO: Handling error!
+          this.toastr.error('Se produjo un error y no se pudo recuperar el servicio');
         }
       );
     });
   }
 
+  /**
+   * Responsible to edit the information of a specific service
+   */
   onSubmit(): void {
     this.businessService.editService(this.service).subscribe(
       (serviceResult: string) => {
+        this.toastr.success('Servicio editado con exito!');
         this.router.navigate(['/services']);
-        // TODO: Toastr notification!
       },
       error => {
-        // TODO: Handling error!
+        this.toastr.error('Se produjo un error y no se pudo editar el servicio');
       }
     );
   }
 
+  /**
+   * Back to the service list view
+   */
   back(): void {
     this.router.navigate(['/services']);
   }
-
 }

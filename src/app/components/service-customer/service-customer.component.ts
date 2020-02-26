@@ -35,6 +35,9 @@ export class ServiceCustomerComponent implements OnInit {
     this.getCustomers();
   }
 
+  /**
+   * Retrieves the available services
+   */
   getServices(): void {
     this.businessService.getServices().subscribe(
       (serviceResult: Service[]) => {
@@ -47,11 +50,14 @@ export class ServiceCustomerComponent implements OnInit {
         });
       },
       error => {
-        // TODO: Handling error
+        this.toastr.error('Se produjo un error y no se pudieron recuperar los servicios');
       }
     );
   }
 
+  /**
+   * Retrieves the available customers
+   */
   getCustomers(): void {
     this.businessService.getCustomers().subscribe(
       (serviceResult: any[]) => {
@@ -67,20 +73,14 @@ export class ServiceCustomerComponent implements OnInit {
         });
       },
       error => {
-        // TODO: Handling error
+        this.toastr.error('Se produjo un error y no se pudieron recuperar los clientes');
       }
     );
   }
 
-  onOperationChanged(): void {
-  }
-
-  onServiceChanged(): void {
-  }
-
-  onCustomerChanged(): void {
-  }
-
+  /**
+   * Responsible to associate a service with a customer
+   */
   associateServiceCustomer(): void {
     this.businessService.getServiceCustomer().subscribe(
       (serviceResultGet: any) => {
@@ -119,6 +119,9 @@ export class ServiceCustomerComponent implements OnInit {
     );
   }
 
+  /**
+   * Validate if the relation service-customer already exist
+   */
   isServiceCustomerExist(): ServiceCustomer {
     return this.servicesCustomers.find(sc => sc.serviceId === this.selectedService.id
       && sc.customerId === this.selectedCustomer.id);
