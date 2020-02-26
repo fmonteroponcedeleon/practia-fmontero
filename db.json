@@ -72,6 +72,16 @@
       "id": 3,
       "nombre": "Seguro De vida",
       "cuotaMensual": 50
+    },
+    {
+      "nombre": "Seguro Electrónico",
+      "cuotaMensual": 500,
+      "id": 4
+    },
+    {
+      "nombre": "Servicio Test",
+      "cuotaMensual": 300,
+      "id": 5
     }
   ],
   "clienteServicio": [
@@ -110,6 +120,18 @@
       "clienteId": 5,
       "fechaAsociado": "2020-02-26T06:42:37.245Z",
       "id": 7
+    },
+    {
+      "servicioId": 4,
+      "clienteId": 7,
+      "fechaAsociado": "2020-02-26T06:48:10.290Z",
+      "id": 8
+    },
+    {
+      "servicioId": 5,
+      "clienteId": 7,
+      "fechaAsociado": "2020-02-26T06:59:49.559Z",
+      "id": 9
     }
   ]
 }

@@ -92,10 +92,10 @@ export class BusinessService {
    * @param name name
    * @param monthlyFee monthly fee
    */
-  createService(name: string, monthlyFee: number): Observable<string> {
+  createService(name: string, monthlyFee: string): Observable<string> {
     const body = JSON.stringify({
       nombre: name,
-      cuotaMensual: monthlyFee
+      cuotaMensual: parseInt(monthlyFee, 10)
     });
     return this.http.post<string>(this.apiUrl + '/servicios/', body, { headers: this.headers });
   }
@@ -107,7 +107,7 @@ export class BusinessService {
   editService(service: Service): Observable<string> {
     const body = JSON.stringify({
       nombre: service.name,
-      cuotaMensual: service.monthlyFee
+      cuotaMensual: parseInt(service.monthlyFee.toString(), 10)
     });
     return this.http.put<string>(this.apiUrl + '/servicios/' + service.id, body, { headers: this.headers });
   }
