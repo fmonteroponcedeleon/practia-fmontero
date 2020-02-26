@@ -1,0 +1,47 @@
+<div class="animated fadeIn fast">
+    <h2>Crear Cliente</h2>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" ngNativeValidate>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputFullName">Nombre</label>
+                <input type="text" class="form-control" id="inputFullName" name="inputFullName" ngModel required
+                    #inputFullName="ngModel">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputDocumentNumber">Cedula</label>
+                <input type="number" class="form-control" id="inputDocumentNumber" name="inputDocumentNumber"
+                    [(ngModel)]="docNumber" required #inputDocumentNumber="ngModel"
+                    (ngModelChange)="validateUruguayanDocumentNumber($event)" min="1000000" max="100000000">
+                <div *ngIf="!isValidUruguayanDocNumber || inputDocumentNumber.invalid && (inputDocumentNumber.dirty || inputDocumentNumber.touched)"
+                    class="alert alert-danger">
+                    <div>
+                        {{ errorDesc }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputAddress">Dirección</label>
+                <input type="text" class="form-control" id="inputAddress" name="inputAddress" ngModel required
+                    #inputAddress="ngModel">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="inputPhone">Teléfono</label>
+                <input type="tel" class="form-control" id="inputPhone" name="inputPhone" ngModel required
+                    #inputPhone="ngModel">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="inputDateOfBirth">Fecha de Nacimiento</label>
+                <input type="date" class="form-control" id="inputDateOfBirth" name="inputDateOfBirth" ngModel required
+                    #inputDateOfBirth="ngModel">
+            </div>
+        </div>
+        <div class="btn-group btn-group-sm" role="group">
+            <button type="button" class="btn btn-secondary" (click)="back()">Volver</button>
+        </div>
+        <div class="btn-group btn-group-sm float-right" role="group">
+            <button type="submit" class="btn btn-success">Crear Cliente</button>
+        </div>
+    </form>
+</div>

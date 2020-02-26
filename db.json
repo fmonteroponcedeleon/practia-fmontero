@@ -1,0 +1,115 @@
+{
+  "cliente": [
+    {
+      "id": 1,
+      "nombreCompleto": "Pablo Acosta",
+      "cedula": "66913574",
+      "direccion": "Bulevar Artigas 1261",
+      "telefono": "22085421",
+      "fechaNacimiento": "1993-02-25"
+    },
+    {
+      "nombreCompleto": "Ana Perez",
+      "cedula": "89541695",
+      "direccion": "San Martin 1454",
+      "telefono": "22085781",
+      "fechaNacimiento": "1987-05-21",
+      "id": 2
+    },
+    {
+      "nombreCompleto": "Carmen Gonzalez",
+      "cedula": "42691449",
+      "direccion": "San Martin 2454",
+      "telefono": "22081281",
+      "fechaNacimiento": "1983-03-05",
+      "id": 3
+    },
+    {
+      "id": 4,
+      "nombreCompleto": "Esteban Muro",
+      "cedula": "1241459",
+      "direccion": "Millan 1432",
+      "telefono": "22042312",
+      "fechaNacimiento": "1978-01-08"
+    },
+    {
+      "id": 5,
+      "nombreCompleto": "Marcela Rodriguez",
+      "cedula": "48371932",
+      "direccion": "Melo 2432",
+      "telefono": "29242548",
+      "fechaNacimiento": "1994-07-11"
+    },
+    {
+      "id": 6,
+      "nombreCompleto": "Cristian Dominguez",
+      "cedula": "40893370",
+      "direccion": "Domingo Aramburu 1561",
+      "telefono": "22012457",
+      "fechaNacimiento": "1990-10-30"
+    },
+    {
+      "nombreCompleto": "Francisco Montero",
+      "cedula": 44178807,
+      "direccion": "Melitón González 1225/106",
+      "telefono": "099239100",
+      "fechaNacimiento": "1982-10-17",
+      "id": 7
+    }
+  ],
+  "servicios": [
+    {
+      "id": 1,
+      "nombre": "Seguro Hogar",
+      "cuotaMensual": 200
+    },
+    {
+      "nombre": "Seguro Auto",
+      "cuotaMensual": 100,
+      "id": 2
+    },
+    {
+      "id": 3,
+      "nombre": "Seguro De vida",
+      "cuotaMensual": 50
+    }
+  ],
+  "clienteServicio": [
+    {
+      "servicioId": 1,
+      "clienteId": 2,
+      "fechaAsociado": "2020-02-25T08:47:05.676Z",
+      "id": 1
+    },
+    {
+      "servicioId": 2,
+      "clienteId": 2,
+      "fechaAsociado": "2020-02-25T18:31:22.351Z",
+      "id": 2
+    },
+    {
+      "servicioId": 2,
+      "clienteId": 5,
+      "fechaAsociado": "2020-02-26T03:10:01.252Z",
+      "id": 4
+    },
+    {
+      "servicioId": 2,
+      "clienteId": 7,
+      "fechaAsociado": "2020-02-26T03:10:09.528Z",
+      "id": 5
+    },
+    {
+      "servicioId": 3,
+      "clienteId": 6,
+      "fechaAsociado": "2020-02-26T06:42:17.305Z",
+      "id": 6
+    },
+    {
+      "servicioId": 3,
+      "clienteId": 5,
+      "fechaAsociado": "2020-02-26T06:42:37.245Z",
+      "id": 7
+    }
+  ]
+}

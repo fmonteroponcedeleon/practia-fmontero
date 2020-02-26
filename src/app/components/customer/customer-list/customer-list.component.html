@@ -1,0 +1,48 @@
+<div class="animated fadeIn fast">
+    <h2>Clientes</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Buscar" [(ngModel)]="term">
+            </div>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">
+                    <a (click)="sortTypePosted('fullName')" class="sort_caret">Nombre
+                        <span *ngIf="sortPropPosted !== 'fullName'" class="placeholder_caret"></span>
+                        <span *ngIf="sortPropPosted === 'fullName' && sortReversePosted"
+                            class="fa fa-caret-down"></span>
+                        <span *ngIf="sortPropPosted === 'fullName' && !sortReversePosted" class="fa fa-caret-up"></span>
+                    </a>
+                </th>
+                <th scope="col">
+                    <a (click)="sortTypePosted('documentNumber')" class="sort_caret">Cedula
+                        <span *ngIf="sortPropPosted !== 'documentNumber'" class="placeholder_caret"></span>
+                        <span *ngIf="sortPropPosted === 'documentNumber' && sortReversePosted"
+                            class="fa fa-caret-down"></span>
+                        <span *ngIf="sortPropPosted === 'documentNumber' && !sortReversePosted"
+                            class="fa fa-caret-up"></span>
+                    </a>
+                </th>
+                <th><button type="button" class="btn btn-success float-right" (click)="createCustomer()">Nuevo</button>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let customer of customers | orderBy: sortPropPosted : sortReversePosted : true | filter: term">
+                <th scope="row">{{ customer.fullName }}</th>
+                <td>{{ customer.documentNumber }}</td>
+                <td>
+                    <div class="btn-group btn-group-sm float-right" role="group">
+                        <button type="button" class="btn btn-primary"
+                            (click)="getCustomerDetails(customer)">Detalle</button>
+                        <button type="button" class="btn btn-warning" (click)="editCustomer(customer)">Editar</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

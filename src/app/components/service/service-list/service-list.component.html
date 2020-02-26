@@ -1,0 +1,47 @@
+<div class="animated fadeIn fast">
+    <h2>Servicios</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Buscar" [(ngModel)]="term">
+            </div>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">
+                    <a (click)="sortTypePosted('name')" class="sort_caret">Nombre
+                        <span *ngIf="sortPropPosted !== 'name'" class="placeholder_caret"></span>
+                        <span *ngIf="sortPropPosted === 'name' && sortReversePosted" class="fa fa-caret-down"></span>
+                        <span *ngIf="sortPropPosted === 'name' && !sortReversePosted" class="fa fa-caret-up"></span>
+                    </a>
+                </th>
+                <th scope="col">
+                    <a (click)="sortTypePosted('monthlyFee')" class="sort_caret">Cuota Mensual
+                        <span *ngIf="sortPropPosted !== 'monthlyFee'" class="placeholder_caret"></span>
+                        <span *ngIf="sortPropPosted === 'monthlyFee' && sortReversePosted"
+                            class="fa fa-caret-down"></span>
+                        <span *ngIf="sortPropPosted === 'monthlyFee' && !sortReversePosted"
+                            class="fa fa-caret-up"></span>
+                    </a>
+                </th>
+                <th><button type="button" class="btn btn-success float-right" (click)="createService()">Nuevo</button>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let service of services | orderBy: sortPropPosted : sortReversePosted : true | filter: term">
+                <th scope="row">{{ service.name }}</th>
+                <td>{{ service.monthlyFee }}</td>
+                <td>
+                    <div class="btn-group btn-group-sm float-right" role="group">
+                        <button type="button" class="btn btn-primary"
+                            (click)="getServiceDetails(service)">Detalle</button>
+                        <button type="button" class="btn btn-warning" (click)="editService(service)">Editar</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
