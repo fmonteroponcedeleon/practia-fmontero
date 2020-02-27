@@ -27,6 +27,15 @@
                             class="fa fa-caret-up"></span>
                     </a>
                 </th>
+                <th scope="col">
+                    <a (click)="sortTypePosted('phone')" class="sort_caret">Teléfono
+                        <span *ngIf="sortPropPosted !== 'phone'" class="placeholder_caret"></span>
+                        <span *ngIf="sortPropPosted === 'phone' && sortReversePosted"
+                            class="fa fa-caret-down"></span>
+                        <span *ngIf="sortPropPosted === 'phone' && !sortReversePosted"
+                            class="fa fa-caret-up"></span>
+                    </a>
+                </th>
                 <th><button type="button" class="btn btn-success float-right" (click)="createCustomer()">Nuevo</button>
                 </th>
             </tr>
@@ -35,6 +44,7 @@
             <tr *ngFor="let customer of customers | orderBy: sortPropPosted : sortReversePosted : true | filter: term">
                 <th scope="row">{{ customer.fullName }}</th>
                 <td>{{ customer.documentNumber }}</td>
+                <td>{{ formatPhone(customer.phone) }}</td>
                 <td>
                     <div class="btn-group btn-group-sm float-right" role="group">
                         <button type="button" class="btn btn-primary"
