@@ -25,12 +25,12 @@
       "id": 3
     },
     {
-      "id": 4,
       "nombreCompleto": "Esteban Muro",
-      "cedula": "1241459",
+      "cedula": 1241459,
       "direccion": "Millan 1432",
       "telefono": "22042312",
-      "fechaNacimiento": "1978-01-08"
+      "fechaNacimiento": "1978-01-08",
+      "id": 4
     },
     {
       "id": 5,
@@ -132,6 +132,12 @@
       "clienteId": 7,
       "fechaAsociado": "2020-02-26T06:59:49.559Z",
       "id": 9
+    },
+    {
+      "servicioId": 5,
+      "clienteId": 3,
+      "fechaAsociado": "2020-02-27T05:17:22.725Z",
+      "id": 10
     }
   ]
 }

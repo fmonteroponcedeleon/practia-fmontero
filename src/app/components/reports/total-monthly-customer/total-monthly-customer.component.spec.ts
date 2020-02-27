@@ -1,4 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
+import { OrderModule } from 'ngx-order-pipe';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ToastrModule } from 'ngx-toastr';
+
+import { BusinessService } from 'src/app/services/business.service';
+import { BusinessMockService } from 'src/app/services/business-mock.service';
 
 import { TotalMonthlyCustomerComponent } from './total-monthly-customer.component';
 
@@ -8,9 +17,24 @@ describe('TotalMonthlyCustomerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TotalMonthlyCustomerComponent ]
+      declarations: [
+        TotalMonthlyCustomerComponent
+      ],
+      imports: [
+        HttpClientTestingModule,
+        FormsModule,
+        OrderModule,
+        Ng2SearchPipeModule,
+        ToastrModule.forRoot()
+      ],
+      providers: [
+        {
+          provide: BusinessService,
+          useClass: BusinessMockService
+        },
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -76,4 +76,21 @@ export class CustomerListComponent implements OnInit {
     this.sortReversePosted = this.sortPropPosted === name ? !this.sortReversePosted : false;
     this.sortPropPosted = name;
   }
+
+  /**
+   * Responsible to format the phone number to xxx xxx xxx or yyyy yy yy
+   * @param phone to format
+   */
+  formatPhone(phone: string): string {
+    let formatedPhone = phone;
+    if (phone.length > 2) {
+      const startWith = phone.substring(0, 2);
+      if (startWith === '09' && phone.length === 9) {
+        formatedPhone = phone.substring(0, 3) + ' ' + phone.substring(3, 6) + ' ' + phone.substring(6, 9);
+      } else if (phone.length === 8) {
+        formatedPhone = phone.substring(0, 4) + ' ' + phone.substring(4, 6) + ' ' + phone.substring(6, 8);
+      }
+    }
+    return formatedPhone;
+  }
 }

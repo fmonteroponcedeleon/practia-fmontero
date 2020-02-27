@@ -1,34 +1,27 @@
 import { Injectable } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
+import { BusinessMockData } from './business-mock.data';
+import { Observable, of } from 'rxjs';
 import { Customer } from '../models/customer';
 import { Service } from '../models/service';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class BusinessService {
-  private headers: HttpHeaders;
-  private apiUrl = 'http://localhost:3000';
+@Injectable()
+export class BusinessMockService {
 
-  constructor(private http: HttpClient) {
-    this.headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  }
+  constructor() { }
 
   /**
    * Responsible to retrieve the customers from the server
    */
   getCustomers(): Observable<Customer[]> {
-    return this.http.get<Customer[]>(this.apiUrl + '/cliente/');
+    return of(BusinessMockData.CUSTOMERS);
   }
 
   /**
    * Responsible to retrieve a specific customers from the server
    */
   getCustomerById(customerId: number): Observable<Customer> {
-    return this.http.get<Customer>(this.apiUrl + '/cliente/' + customerId);
+    return of(BusinessMockData.CUSTOMERS.find(c => c.id === customerId));
   }
 
   /**
@@ -40,14 +33,7 @@ export class BusinessService {
    * @param dateOfBirth date of birth 
    */
   createCustomer(fullName: string, documentNumber: string, address: string, phone: string, dateOfBirth: string): Observable<string> {
-    const body = JSON.stringify({
-      nombreCompleto: fullName,
-      cedula: documentNumber,
-      direccion: address,
-      telefono: phone,
-      fechaNacimiento: dateOfBirth
-    });
-    return this.http.post<string>(this.apiUrl + '/cliente/', body, { headers: this.headers });
+    return of('');
   }
 
   /**
@@ -55,14 +41,7 @@ export class BusinessService {
    * @param customer to edit
    */
   editCustomer(customer: Customer): Observable<string> {
-    const body = JSON.stringify({
-      nombreCompleto: customer.fullName,
-      cedula: customer.documentNumber,
-      direccion: customer.address,
-      telefono: customer.phone,
-      fechaNacimiento: customer.dateOfBirth
-    });
-    return this.http.put<string>(this.apiUrl + '/cliente/' + customer.id, body, { headers: this.headers });
+    return of('');
   }
 
   /**
@@ -70,21 +49,21 @@ export class BusinessService {
    * @param customerId the customer id to delete
    */
   deleteCustomer(customerId: number): Observable<string> {
-    return this.http.delete<string>(this.apiUrl + '/cliente/' + customerId);
+    return of('');
   }
 
   /**
    * Responsible to retrieve the service from the server
    */
   getServices(): Observable<Service[]> {
-    return this.http.get<Service[]>(this.apiUrl + '/servicios/');
+    return of(BusinessMockData.SERVICES);
   }
 
   /**
    * Responsible to retrieve a specific service from the server
    */
   getServiceById(serviceId: number): Observable<Service> {
-    return this.http.get<Service>(this.apiUrl + '/servicios/' + serviceId);
+    return of(BusinessMockData.SERVICES.find(s => s.id === serviceId));
   }
 
   /**
@@ -93,11 +72,7 @@ export class BusinessService {
    * @param monthlyFee monthly fee
    */
   createService(name: string, monthlyFee: string): Observable<string> {
-    const body = JSON.stringify({
-      nombre: name,
-      cuotaMensual: parseInt(monthlyFee, 10)
-    });
-    return this.http.post<string>(this.apiUrl + '/servicios/', body, { headers: this.headers });
+    return of('');
   }
 
   /**
@@ -105,11 +80,7 @@ export class BusinessService {
    * @param service to edit
    */
   editService(service: Service): Observable<string> {
-    const body = JSON.stringify({
-      nombre: service.name,
-      cuotaMensual: parseInt(service.monthlyFee.toString(), 10)
-    });
-    return this.http.put<string>(this.apiUrl + '/servicios/' + service.id, body, { headers: this.headers });
+    return of('');
   }
 
   /**
@@ -117,7 +88,7 @@ export class BusinessService {
    * @param serviceId the service id to delete
    */
   deleteService(serviceId: number): Observable<string> {
-    return this.http.delete<string>(this.apiUrl + '/servicios/' + serviceId);
+    return of('');
   }
 
   /**
@@ -127,12 +98,7 @@ export class BusinessService {
    * @param dateOfAssociation date of the association
    */
   associateServiceCustomer(serviceId: number, customerId: number, dateOfAssociation: Date): Observable<string> {
-    const body = JSON.stringify({
-      servicioId: serviceId,
-      clienteId: customerId,
-      fechaAsociado: dateOfAssociation
-    });
-    return this.http.post<string>(this.apiUrl + '/clienteServicio/', body, { headers: this.headers });
+    return of('');
   }
 
   /**
@@ -140,14 +106,13 @@ export class BusinessService {
    * @param serviceCustomerId to desassociate
    */
   desassociateServiceCustomer(serviceCustomerId: number): Observable<string> {
-    return this.http.delete<string>(this.apiUrl + '/clienteServicio/' + serviceCustomerId);
+    return of('');
   }
 
   /**
    * Responsible to retrieve the associations between customer and service from the server
    */
   getServiceCustomer(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl + '/clienteServicio');
+    return of(BusinessMockData.SERVICES_CUSTOMERS);
   }
-
 }
