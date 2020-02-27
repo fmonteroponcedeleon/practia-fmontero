@@ -59,7 +59,7 @@ import { TotalMonthlyCustomerComponent } from './components/reports/total-monthl
     ToastrModule.forRoot(),
     OrderModule,
     AngularFontAwesomeModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
   ],
   providers: [
     BusinessService
